@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'user.separate'], function () {
     Route::get('/login', ['App\Http\Controllers\Auth\LoginController', 'showPage'])->name('login');
     Route::post('/login', ['App\Http\Controllers\Auth\LoginController', 'authenticate'])->name('login');
-    Route::resource('/register', 'App\Http\Controllers\Register\RegisterController')->only(['create', 'store']);
+    Route::get('/register', ['App\Http\Controllers\Register\RegisterController', 'create'])->name('register.create');
+    Route::post('/register', ['App\Http\Controllers\Register\RegisterController', 'store'])->name('register.store');
 });
 
 // Authenticated user routes
