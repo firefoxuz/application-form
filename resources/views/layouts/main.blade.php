@@ -13,7 +13,6 @@
 
     <!--main Css-->
     <link href="{{asset('template/admin/css/main.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('datepickerjs/datepicker.css')}}">
 </head>
 <body>
 <!-- header-->
@@ -121,7 +120,6 @@
 <script src="{{asset('template/admin/js/plugins.min.js')}}"></script>
 
 <script src="{{asset('template/admin/js/common.js')}}"></script>
-<script src="{{asset('template/admin/js/toastr.js')}}"></script>
 @include('layouts.toastr')
 @yield('scripts')
 </body>

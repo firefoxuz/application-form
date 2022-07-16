@@ -69,7 +69,7 @@
 
 <!-- jQuery -->
 <script src="{{asset('template/admin/js/plugins.min.js')}}"></script>
-<script src="{{asset('template/admin/js/common.min.js')}}"></script>
+<script src="{{asset('template/admin/js/common.js')}}"></script>
 @include('layouts.toastr')
 </body>
 

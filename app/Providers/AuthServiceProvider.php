@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +27,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('store-form', function (User $user) {
+            // User can store form after 24 hours from last store
+            return $user->forms()->latest()->first()->created_at->diffInHours(Carbon::now()) >= 24;
+        });
     }
 }

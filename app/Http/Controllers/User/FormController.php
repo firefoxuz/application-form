@@ -9,6 +9,7 @@ use App\Http\Requests\FormRequest;
 use App\Models\Form;
 use App\Services\ToasrtService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 
 class FormController extends Controller
 {
@@ -31,6 +32,12 @@ class FormController extends Controller
      */
     public function store(FormRequest $request, StoreFormAction $action): RedirectResponse
     {
+        if (Gate::forUser(auth()->user())->denies('store-form')) {
+            ToasrtService::addMessage('error', 'You can post form once in 24 hours. Please wait');
+            return redirect()->back();
+        }
+
+
         $data = FormData::fromRequest($request);
         $is_stored = $action->execute($data);
 

@@ -467,7 +467,7 @@ $('#demoprogressbar4').LineProgressbar({
     toastr.options = {
         "debug": false,
         "newestOnTop": false,
-        "positionClass": "toast-bottom-left",
+        "positionClass": "toast-bottom-right",
         "closeButton": true,
         "progressBar": true
     };
